@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 To do Items
+  table
+    thead
+      tr
+        th Description
+        th Completed?
+    tbody
+      each item in toDoItems
+        tr
+          td= item.description
+          td= item.completed
+            div.row
+              if item.completed
+                a(href=`incomplete/${item.id}`) Mark incomplete
+              else
+                a(href=`complete/${item.id}`) Mark Complete
+              br
+              a(href=`delete/${item.id}`) Delete item
+              a(href=`edit/${item.id}`) Edit item
+
+  a(href='/add') Add Item
